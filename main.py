@@ -1,6 +1,7 @@
 from fastapi import FastAPI, APIRouter, HTTPException
 from pydantic import BaseModel
 from typing import Dict, List, Union
+from ai_logic import generate_learning_path, recommend_products, get_personalized_news
 
 app = FastAPI()
 
@@ -95,12 +96,9 @@ async def submit_survey(response: SurveyResponse):
 
 @api_router.get("/learning-path/{username}")
 async def get_learning_path(username: str):
-    if username not in users_db:
-        raise HTTPException(status_code=404, detail='User not found')
-    if username not in learning_paths:
-        learning_resources = [content["resources"][0] for key, content in content_db.items()]
-        learning_paths[username] = LearningPath(username=username, path=learning_resources)
-    return {"username": username, "learning_path": learning_paths[username].path}
+    # Usa la función importada para generar la ruta de aprendizaje
+    path = generate_learning_path(username)
+    return {"username": username, "learning_path": path}
 
 @api_router.post("/chatbot")
 async def chatbot_interact(query: ChatBotQuery):
@@ -130,15 +128,15 @@ async def get_dashboard(username: str):
 
 @api_router.get("/products/{username}")
 async def get_products(username: str):
-    if username not in users_db:
-        raise HTTPException(status_code=404, detail='User not found')
-    return {"username": username, "products": user_products.get(username, [])}
+    # Usa la función importada para obtener productos personalizados
+    products = recommend_products(username)
+    return {"username": username, "products": products}
 
 @api_router.get("/news/{username}")
 async def get_news(username: str):
-    if username not in users_db:
-        raise HTTPException(status_code=404, detail='User not found')
-    return {"username": username, "news": user_news.get(username, [])}
+    # Usa la función importada para obtener noticias personalizadas
+    news = get_personalized_news(username)
+    return {"username": username, "news": news}
 
 # --- Mount the API Router ---
 app.include_router(api_router)
