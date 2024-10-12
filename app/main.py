@@ -7,7 +7,7 @@ app = FastAPI()
 
 @app.get("/")
 def read_root():
-    return {"message": "Bienvenido a la plataforma de crecimiento financiero."}
+    return {"message": "Bienvenido a la plataforma de crecimiento financiero Hackathon Banorte."}
 users_db : Dict[str, str] = {}
 
 class User(BaseModel):
