@@ -1,4 +1,4 @@
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Union
 from ai_logic import generate_learning_path, recommend_products, get_personalized_news
 from pydantic import BaseModel
 from google.cloud import firestore
@@ -27,6 +27,7 @@ learning_paths_ref = db.collection('learning_paths')
 user_products_ref = db.collection('user_products')
 user_news_ref = db.collection('user_news')
 chatbot_history_ref = db.collection('chatbot_history')
+modules_ref = db.collection('content_topics')
 
 def add_user(username: str, password: str):
     """Agregar un nuevo usuario a Firestore."""
@@ -71,7 +72,16 @@ def get_survey_response(username: str) -> Optional[List[int]]:
 def set_learning_path(username: str):
     """Establecer el camino de aprendizaje para un usuario."""
     try:
-        learning_path = generate_learning_path(username)
+        # Obtener las respuestas de la encuesta del usuario
+        answers = get_survey_response(username)
+        if not answers:
+            print(f"No se encontraron respuestas de la encuesta para {username}.")
+            return
+        
+        # Generar la ruta de aprendizaje basada en las respuestas de la encuesta
+        learning_path = generate_learning_path(answers)
+        
+        # Almacenar el camino de aprendizaje en Firestore
         learning_paths_ref.document(username).set({
             'learning_path': learning_path
         })
@@ -79,15 +89,24 @@ def set_learning_path(username: str):
     except Exception as e:
         print(f"Error al establecer el camino de aprendizaje: {e}")
 
-def get_learning_path(username: str) -> Optional[List[str]]:
+
+def get_learning_path(username: str) -> Optional[Dict[str, Union[Dict[str, List[str]], bool]]]:
     """Obtener el camino de aprendizaje de un usuario."""
     try:
         path_doc = learning_paths_ref.document(username).get()
-        return path_doc.to_dict().get('learning_path') if path_doc.exists else None
+        if path_doc.exists:
+            data = path_doc.to_dict()
+            return {
+                'learning_path': data.get('learning_path'),
+                'started': data.get('started', False)  # Devuelve el estado 'started'
+            }
+        else:
+            print(f"No se encontró un camino de aprendizaje para el usuario: {username}")
+            return None
     except Exception as e:
         print(f"Error al obtener el camino de aprendizaje: {e}")
         return None
-
+    
 def set_user_products(username: str):
     """Establecer productos recomendados para un usuario."""
     try:
@@ -157,22 +176,3 @@ def get_chatbot_history(username: str) -> List[Dict[str, str]]:
         print(f"Error al obtener la historia del chatbot: {e}")
         return []
     
-def set_learning_path(username: str):
-    """Establecer el camino de aprendizaje para un usuario."""
-    try:
-        # Obtener las respuestas de la encuesta del usuario
-        answers = get_survey_response(username)
-        if not answers:
-            print(f"No se encontraron respuestas de la encuesta para {username}.")
-            return
-        
-        # Generar el camino de aprendizaje utilizando la lógica de IA
-        learning_path = generate_learning_path(answers)
-        
-        # Guardar el camino de aprendizaje en Firestore
-        learning_paths_ref.document(username).set({
-            'learning_path': learning_path
-        })
-        print(f"Camino de aprendizaje para {username} establecido correctamente.")
-    except Exception as e:
-        print(f"Error al establecer el camino de aprendizaje: {e}")

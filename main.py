@@ -58,13 +58,16 @@ async def submit_survey(response: SurveyResponse):
 
 @api_router.get("/learning-path/{username}")
 async def get_learning_path_route(username: str):
-    path = get_learning_path(username)
-    if not path:
+    path_info = get_learning_path(username)
+    if not path_info:
         set_learning_path(username)  # Genera la ruta si no existe
-        path = get_learning_path(username)
+        path_info = get_learning_path(username)
     
-    return {"username": username, "learning_path": path}
-
+    return {
+        "username": username,
+        "learning_path": path_info['learning_path'],
+        "started": path_info['started']  # Incluye si ya ha comenzado
+    }
 
 @api_router.post("/chatbot")
 async def chatbot_interact(query: ChatBotQuery):

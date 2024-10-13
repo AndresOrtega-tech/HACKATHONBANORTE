@@ -11,19 +11,6 @@ model = tf.keras.models.load_model(MODEL_PATH)
 # Inicializar Firestore
 db = firestore.Client(project='gcp-banorte-hackaton-team-13')
 
-def get_learning_paths_from_db() -> Dict[str, List[str]]:
-    """Obtener los nombres de las rutas de aprendizaje y su contenido desde Firestore."""
-    try:
-        # Asumimos que tienes una colección llamada 'content_topics'
-        learning_paths_ref = db.collection('content_topics')
-        paths = learning_paths_ref.stream()
-
-        # Devolver un diccionario donde la clave es el nombre de la ruta y el valor es el contenido
-        return {doc.id: doc.to_dict().get('content', []) for doc in paths}  
-    except Exception as e:
-        print(f"Error al obtener rutas de aprendizaje: {e}")
-        return {}
-
 def generate_learning_path(answers: List[int]) -> Dict[str, List[str]]:
     """Generar la ruta de aprendizaje basada en las respuestas de la encuesta."""
     # Preprocesar las respuestas
@@ -34,15 +21,49 @@ def generate_learning_path(answers: List[int]) -> Dict[str, List[str]]:
     threshold = 0.5
     learning_paths = {}
 
-    # Iterar sobre las predicciones y construir la ruta de aprendizaje
-    for i, predicted in enumerate(predictions[0]):  # Se asume que predictions es de la forma (1, n)
+    # Aquí suponemos que tienes un mapeo de índices a nombres de módulos
+    for i, predicted in enumerate(predictions[0]):
         if predicted > threshold:
-            # Aquí asumimos que el índice de la predicción corresponde al índice de las rutas
             path_name = list(content_map.keys())[i]
             # Obtener el contenido de cada ruta desde content_map
             learning_paths[path_name] = content_map[path_name]["resources"]
 
-    return learning_paths 
+    # Seleccionar los tres módulos más relevantes
+    sorted_paths = sorted(learning_paths.items(), key=lambda x: predictions[0][list(content_map.keys()).index(x[0])], reverse=True)
+    
+    # Tomar solo los primeros 3 módulos o menos si no hay suficientes
+    top_learning_paths = dict(sorted_paths[:3])
+
+    # Si hay menos de 3, completar con módulos aleatorios de content_map
+    while len(top_learning_paths) < 3:
+        remaining_modules = set(content_map.keys()) - set(top_learning_paths.keys())
+        if remaining_modules:
+            random_module = np.random.choice(list(remaining_modules))
+            top_learning_paths[random_module] = content_map[random_module]["resources"]
+
+    return top_learning_paths
+
+
+# Referencias a las colecciones
+learning_paths_ref = db.collection('learning_paths')
+
+
+def get_learning_path(username: str, answers: List[int]) -> Dict[str, List[str]]:
+    """Genera un camino de aprendizaje basado en el usuario desde la base de datos y lo almacena en Firestore."""
+    
+    # Generar la ruta de aprendizaje basada en las respuestas de la encuesta
+    learning_modules = generate_learning_path(answers)
+
+    # Almacenar el camino de aprendizaje en la colección learning_paths
+    learning_paths_ref.document(username).set({
+        'learning_path': learning_modules,
+        'started': False  # O lo que necesites según tu lógica
+    })
+    
+    return {
+        'modules': learning_modules
+    }
+
 
 def recommend_products(username: str) -> List[dict]:
     # Lógica para recomendar productos financieros al usuario
