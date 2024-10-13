@@ -28,6 +28,8 @@ user_products_ref = db.collection('user_products')
 user_news_ref = db.collection('user_news')
 chatbot_history_ref = db.collection('chatbot_history')
 modules_ref = db.collection('content_topics')
+chatbot_messages = db.collection('chatbot_messages')
+
 
 def add_user(username: str, password: str):
     """Agregar un nuevo usuario a Firestore."""
@@ -165,14 +167,20 @@ def add_chatbot_message(username: str, user_message: str, bot_response: str):
     except Exception as e:
         print(f"Error al agregar mensaje del chatbot: {e}")
 
-def get_chatbot_history(username: str) -> List[Dict[str, str]]:
-    """Obtener la historia del chatbot de un usuario."""
-    try:
-        history_doc = chatbot_history_ref.document(username).get()
-        if history_doc.exists:
-            return history_doc.to_dict().get('history', [])
-        return []
-    except Exception as e:
-        print(f"Error al obtener la historia del chatbot: {e}")
-        return []
+def get_chatbot_history(username: str):
+    return chatbot_messages.get(username, [])
+
+def get_user_news(username: str) -> List[str]:
+    # Obtener la colección de noticias
+    news_ref = db.collection('news_articles')
     
+    # Obtener todos los documentos en la colección
+    news_docs = news_ref.stream()
+    
+    # Almacenar el contenido de las noticias en una lista
+    news = []
+    for doc in news_docs:
+        news.append(doc.to_dict()['content'])
+    
+    return news
+

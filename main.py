@@ -1,6 +1,7 @@
 from fastapi import FastAPI, APIRouter, HTTPException
 from pydantic import BaseModel
 from typing import Dict, List, Union
+import random
 from database import add_user, get_user, add_survey_response, get_survey_response, set_learning_path, get_learning_path
 from database import set_user_products, get_user_products, set_user_news, get_user_news, add_chatbot_message, get_chatbot_history
 
@@ -73,10 +74,52 @@ async def get_learning_path_route(username: str):
 async def chatbot_interact(query: ChatBotQuery):
     if not get_user(query.username):
         raise HTTPException(status_code=404, detail='User not found')
+
     user_message = query.message
-    bot_response = f"Hola {query.username}, aquí tienes algunos consejos financieros sobre: {user_message}"
+    bot_response = ""
+
+    if "noticia" in user_message.lower():  # Comprueba si el mensaje contiene "noticia"
+        news = get_user_news(query.username)  # Obtener todas las noticias del usuario
+        
+        if not news:
+            bot_response = "No hay noticias disponibles."
+        else:
+            random_news = random.sample(news, min(3, len(news)))  # Selecciona hasta 3 noticias aleatorias
+            bot_response = "Aquí tienes algunas noticias financieras:\n" + "\n".join(random_news)
+
+    else:
+        bot_response = f"Hola {query.username}, aquí tienes algunos consejos financieros sobre: {user_message}"
+
     add_chatbot_message(query.username, user_message, bot_response)
     return {"user_message": user_message, "bot_response": bot_response}
+
+def generate_financial_response(message: str, username: str) -> str:
+    """Genera una respuesta financiera basada en la base de datos."""
+    
+    # Lógica simple para identificar palabras clave en el mensaje
+    if "producto" in message.lower():
+        products = get_user_products(username)
+        if products:
+            return f"Aquí están tus productos: {', '.join(products)}."
+        else:
+            return "No tienes productos registrados."
+
+    elif "noticia" in message.lower():
+        news = get_user_news(username)
+        if news:
+            return f"Aquí tienes las últimas noticias: {', '.join(news)}."
+        else:
+            return "No hay noticias disponibles."
+
+    elif "contenido" in message.lower():
+        learning_path_data = get_learning_path(username)
+        if learning_path_data:
+            return f"Tienes estos temas en tu ruta de aprendizaje: {', '.join(learning_path_data['learning_path'])}."
+        else:
+            return "No tienes una ruta de aprendizaje establecida."
+
+    else:
+        return "Lo siento, no entiendo tu solicitud. ¿Puedes preguntar sobre productos, noticias o contenido?"
 
 @api_router.get("/dashboard/{username}")
 async def get_dashboard(username: str):
