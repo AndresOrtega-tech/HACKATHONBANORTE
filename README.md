@@ -36,16 +36,29 @@ El Finanzas AI Chatbot es una aplicación diseñada para ayudar a los usuarios a
 
 Estructura del Proyecto
 La estructura del proyecto es la siguiente:
-Copy/finanzas_ai_chatbot
+finanzas_ai_chatbot
+
 │
-├── database.py           # Manejo de la base de datos Firestore
+
+
+├── database.py     
+
+      # Manejo de la base de datos Firestore
+
 ├── ai_logic.py           # Lógica de aprendizaje automático
+
 ├── chatbot.py            # Implementación del chatbot
+
 ├── info.py               # Definiciones de modelos y funciones de base de datos
+
 ├── learningpathia.py     # Entrenamiento del modelo de aprendizaje automático
+
 ├── adjustable_learning_path_data.json  # Datos de entrada para el modelo
+
 ├── requirements.txt      # Dependencias del proyecto
+
 └── README.md             # Documentación del proyecto
+
 
 
 ## Instalación
