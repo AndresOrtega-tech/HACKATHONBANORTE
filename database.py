@@ -167,8 +167,19 @@ def add_chatbot_message(username: str, user_message: str, bot_response: str):
     except Exception as e:
         print(f"Error al agregar mensaje del chatbot: {e}")
 
-def get_chatbot_history(username: str):
-    return chatbot_messages.get(username, [])
+def get_chatbot_history(username: str) -> List[Dict[str, str]]:
+    """Obtener el historial de mensajes del chatbot de un usuario."""
+    try:
+        history_doc = chatbot_history_ref.document(username).get()  # Get the user document from Firestore
+        if history_doc.exists:
+            history_data = history_doc.to_dict().get('history', [])
+            return history_data  # Return the list of messages
+        else:
+            print(f"No se encontró historial de chatbot para el usuario: {username}")
+            return []  # Return an empty list if no history exists
+    except Exception as e:
+        print(f"Error al obtener historial de chatbot: {e}")
+        return []  # Return an empty list on error
 
 def get_user_news(username: str) -> List[str]:
     # Obtener la colección de noticias
@@ -184,3 +195,28 @@ def get_user_news(username: str) -> List[str]:
     
     return news
 
+def get_user_contract_products(username: str) -> List[Product]:
+    try:
+        products_doc = db.collection('user_contract_products').document(username).get()
+        if products_doc.exists:
+            products_data = products_doc.to_dict().get('products', [])
+            return [Product(**product) for product in products_data]
+        return []
+    except Exception as e:
+        print(f"Error al obtener productos contratados: {e}")
+        return []
+
+def add_user_contract_products(username: str, products: List[Product]):
+    """Agregar productos contratados a un usuario."""
+    try:
+        user_contract_ref = db.collection('user_contract_products').document(username)
+        
+        # Convert products to a list of dictionaries
+        product_data = [product.dict() for product in products]
+        
+        user_contract_ref.set({
+            'products': product_data
+        })
+        print(f"Productos contratados para {username} agregados correctamente.")
+    except Exception as e:
+        print(f"Error al agregar productos contratados: {e}")

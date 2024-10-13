@@ -22,6 +22,7 @@ class NewsArticle(BaseModel):
     title: str
     content: str
 
+
 survey_questions_ref = db.collection('survey_questions')
 content_topics_ref = db.collection('content_topics')
 financial_products_ref = db.collection('financial_products')
