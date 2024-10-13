@@ -106,3 +106,14 @@ El Finanzas AI Chatbot ha sido diseñado con varios principios y arquitecturas q
 5. Capacidad de Análisis y Ajuste
 * Monitorización de Rendimiento: Con herramientas de monitorización y análisis, se pueden identificar cuellos de botella y áreas de mejora, lo que permite realizar ajustes en tiempo real y escalar recursos según sea necesario.
 * Flexibilidad en la Gestión de Recursos: La arquitectura permite ajustar los recursos de procesamiento y almacenamiento en función de la demanda, garantizando un rendimiento óptimo incluso con cargas de trabajo fluctuantes.
+
+# INSTALACION
+* git clone <URL_DEL_REPOSITORIO>
+* cd finanzas_ai_chatbot
+* curl -sSL https://install.python-poetry.org | python3 -
+* poetry install
+
+# USO
+* python learningpathia.py
+
+# EJEMPLOS DE APIS

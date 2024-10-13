@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "hackathon banorte"
+version = "0.1.0"
+description = ""
+authors = ["Andres Tamez Ortega <tamezandres191@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.115.2"
+pydantic = "^2.9.2"
+google = "^3.0.0"
+transformers = "^4.45.2"
+tensorflow = "^2.17.0"
+cors = "^1.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
