@@ -1,0 +1,511 @@
+[
+    {
+        "answers": [1, 1, 1, 2, 3, 1, 1],
+        "learning_path": {
+            "Conceptos Básicos de Finanzas Personales": [
+                "Introducción a Finanzas Personales",
+                "Presupuesto Básico",
+                "Ahorro vs. Inversión"
+            ],
+            "Gestión de Deudas": [
+                "Tipos de Deudas",
+                "Estrategias de Pago de Deudas"
+            ],
+            "Planificación Financiera": [
+                "Establecimiento de Metas Financieras",
+                "Uso de Herramientas Financieras"
+            ]
+        }
+    },
+    {
+        "answers": [2, 3, 1, 1, 2, 2, 3],
+        "learning_path": {
+            "Cómo Crear un Presupuesto": [
+                "Cómo Crear un Presupuesto",
+                "Control de Gastos"
+            ],
+            "Introducción a las Inversiones": [
+                "Guía de Inversiones"
+            ],
+            "Aspectos Fiscales de Inversiones": [
+                "Declaración de Impuestos"
+            ]
+        }
+    },
+    {
+        "answers": [1, 2, 2, 3, 4, 2, 1],
+        "learning_path": {
+            "Ahorro vs. Inversión": [
+                "Introducción a Ahorro",
+                "Tipos de Inversiones"
+            ],
+            "Gestión de Deudas": [
+                "Estrategias de Pago de Deudas"
+            ],
+            "Planificación Financiera": [
+                "Presupuesto Personal"
+            ]
+        }
+    },
+    {
+        "answers": [3, 4, 2, 1, 1, 1, 2],
+        "learning_path": {
+            "Planificación Financiera": [
+                "Establecimiento de Metas Financieras"
+            ],
+            "Estrategias de Ahorro": [
+                "Estrategias de Ahorro"
+            ]
+        }
+    },
+    {
+        "answers": [1, 2, 2, 2, 3, 1, 1],
+        "learning_path": {
+            "Conceptos Básicos de Finanzas Personales": [
+                "Ahorro vs. Inversión"
+            ],
+            "Introducción a las Inversiones": [
+                "Riesgo y Rendimiento"
+            ]
+        }
+    },
+    {
+        "answers": [4, 1, 1, 1, 2, 3, 4],
+        "learning_path": {
+            "Gestión de Deudas": [
+                "Tipos de Deudas",
+                "Control de Créditos"
+            ],
+            "Planificación Financiera": [
+                "Presupuesto Personal"
+            ]
+        }
+    },
+    {
+        "answers": [2, 1, 3, 3, 4, 1, 2],
+        "learning_path": {
+            "Cómo Crear un Presupuesto": [
+                "Cómo Crear un Presupuesto",
+                "Control de Gastos"
+            ],
+            "Aspectos Fiscales de Inversiones": [
+                "Beneficios Fiscales"
+            ]
+        }
+    },
+    {
+        "answers": [1, 1, 2, 2, 1, 2, 3],
+        "learning_path": {
+            "Ahorro vs. Inversión": [
+                "Tipos de Inversiones",
+                "Riesgo y Rendimiento"
+            ],
+            "Estrategias de Ahorro": [
+                "Inversiones de Bajo Riesgo"
+            ]
+        }
+    },
+    {
+        "answers": [3, 4, 3, 2, 2, 1, 1],
+        "learning_path": {
+            "Introducción a las Inversiones": [
+                "Riesgo y Rendimiento"
+            ],
+            "Planificación Financiera": [
+                "Uso de Herramientas Financieras"
+            ]
+        }
+    },
+    {
+        "answers": [1, 1, 1, 2, 3, 1, 4],
+        "learning_path": {
+            "Conceptos Básicos de Finanzas Personales": [
+                "Introducción a Finanzas Personales"
+            ],
+            "Gestión de Deudas": [
+                "Estrategias de Pago de Deudas"
+            ]
+        }
+    },
+    {
+        "answers": [4, 4, 3, 1, 1, 2, 3],
+        "learning_path": {
+            "Gestión de Deudas": [
+                "Tipos de Deudas"
+            ],
+            "Introducción a las Inversiones": [
+                "Mercados Financieros"
+            ]
+        }
+    },
+    {
+        "answers": [2, 2, 1, 1, 3, 2, 1],
+        "learning_path": {
+            "Ahorro vs. Inversión": [
+                "Introducción a Ahorro"
+            ],
+            "Cómo Crear un Presupuesto": [
+                "Control de Gastos"
+            ]
+        }
+    },
+    {
+        "answers": [1, 1, 2, 1, 2, 1, 1],
+        "learning_path": {
+            "Conceptos Básicos de Finanzas Personales": [
+                "Introducción a Finanzas Personales"
+            ],
+            "Gestión de Deudas": [
+                "Estrategias de Pago de Deudas"
+            ]
+        }
+    },
+    {
+        "answers": [3, 3, 2, 2, 4, 3, 2],
+        "learning_path": {
+            "Introducción a las Inversiones": [
+                "Riesgo y Rendimiento"
+            ],
+            "Estrategias de Ahorro": [
+                "Estrategias de Ahorro"
+            ]
+        }
+    },
+    {
+        "answers": [2, 1, 2, 1, 2, 1, 1],
+        "learning_path": {
+            "Cómo Crear un Presupuesto": [
+                "Cómo Crear un Presupuesto"
+            ],
+            "Aspectos Fiscales de Inversiones": [
+                "Beneficios Fiscales"
+            ]
+        }
+    },
+    {
+        "answers": [3, 2, 2, 3, 4, 3, 4],
+        "learning_path": {
+            "Gestión de Deudas": [
+                "Tipos de Deudas"
+            ],
+            "Aspectos Fiscales de Inversiones": [
+                "Declaración de Impuestos"
+            ]
+        }
+    },
+    {
+        "answers": [1, 2, 1, 1, 1, 1, 1],
+        "learning_path": {
+            "Conceptos Básicos de Finanzas Personales": [
+                "Ahorro vs. Inversión"
+            ],
+            "Cómo Crear un Presupuesto": [
+                "Cómo Crear un Presupuesto"
+            ]
+        }
+    },
+    {
+        "answers": [2, 3, 1, 2, 3, 1, 1],
+        "learning_path": {
+            "Cómo Crear un Presupuesto": [
+                "Control de Gastos"
+            ],
+            "Introducción a las Inversiones": [
+                "Guía de Inversiones"
+            ]
+        }
+    },
+    {
+        "answers": [1, 1, 1, 1, 2, 1, 1],
+        "learning_path": {
+            "Conceptos Básicos de Finanzas Personales": [
+                "Introducción a Finanzas Personales"
+            ],
+            "Gestión de Deudas": [
+                "Tipos de Deudas"
+            ]
+        }
+    },
+    {
+        "answers": [3, 4, 4, 3, 4, 2, 3],
+        "learning_path": {
+            "Gestión de Deudas": [
+                "Estrategias de Pago de Deudas"
+            ],
+            "Aspectos Fiscales de Inversiones": [
+                "Declaración de Impuestos"
+            ]
+        }
+    },
+    {
+        "answers": [1, 2, 2, 1, 1, 2, 1],
+        "learning_path": {
+            "Conceptos Básicos de Finanzas Personales": [
+                "Introducción a Finanzas Personales"
+            ],
+            "Gestión de Deudas": [
+                "Control de Créditos"
+            ]
+        }
+    },
+    {
+        "answers": [3, 3, 1, 4, 2, 3, 4],
+        "learning_path": {
+            "Ahorro vs. Inversión": [
+                "Tipos de Inversiones"
+            ],
+            "Gestión de Deudas": [
+                "Estrategias de Pago de Deudas"
+            ]
+        }
+    },
+    {
+        "answers": [4, 1, 2, 2, 3, 3, 1],
+        "learning_path": {
+            "Cómo Crear un Presupuesto": [
+                "Cómo Crear un Presupuesto"
+            ],
+            "Introducción a las Inversiones": [
+                "Riesgo y Rendimiento"
+            ]
+        }
+    },
+    {
+        "answers": [1, 1, 1, 1, 1, 1, 1],
+        "learning_path": {
+            "Conceptos Básicos de Finanzas Personales": [
+                "Introducción a Finanzas Personales"
+            ]
+        }
+    },
+    {
+        "answers": [2, 2, 3, 2, 1, 1, 1],
+        "learning_path": {
+            "Cómo Crear un Presupuesto": [
+                "Cómo Crear un Presupuesto"
+            ],
+            "Estrategias de Ahorro": [
+                "Estrategias de Ahorro"
+            ]
+        }
+    },
+    {
+        "answers": [4, 4, 3, 1, 2, 2, 2],
+        "learning_path": {
+            "Cómo Crear un Presupuesto": [
+                "Control de Gastos"
+            ],
+            "Aspectos Fiscales de Inversiones": [
+                "Planificación Fiscal"
+            ]
+        }
+    },
+    {
+        "answers": [3, 3, 4, 3, 4, 2, 1],
+        "learning_path": {
+            "Ahorro vs. Inversión": [
+                "Tipos de Inversiones"
+            ],
+            "Gestión de Deudas": [
+                "Tipos de Deudas"
+            ]
+        }
+    },
+    {
+        "answers": [2, 2, 1, 3, 3, 2, 2],
+        "learning_path": {
+            "Cómo Crear un Presupuesto": [
+                "Cómo Crear un Presupuesto"
+            ],
+            "Gestión de Deudas": [
+                "Estrategias de Pago de Deudas"
+            ]
+        }
+    },
+    {
+        "answers": [1, 1, 1, 2, 2, 1, 1],
+        "learning_path": {
+            "Conceptos Básicos de Finanzas Personales": [
+                "Introducción a Finanzas Personales"
+            ],
+            "Estrategias de Ahorro": [
+                "Estrategias de Ahorro"
+            ]
+        }
+    },
+    {
+        "answers": [3, 2, 2, 4, 4, 3, 2],
+        "learning_path": {
+            "Gestión de Deudas": [
+                "Tipos de Deudas"
+            ],
+            "Aspectos Fiscales de Inversiones": [
+                "Beneficios Fiscales"
+            ]
+        }
+    },
+    {
+        "answers": [4, 4, 3, 1, 3, 3, 1],
+        "learning_path": {
+            "Estrategias de Ahorro": [
+                "Estrategias de Ahorro"
+            ],
+            "Gestión de Deudas": [
+                "Tipos de Deudas"
+            ]
+        }
+    },
+    {
+        "answers": [1, 1, 1, 1, 1, 1, 1],
+        "learning_path": {
+            "Conceptos Básicos de Finanzas Personales": [
+                "Introducción a Finanzas Personales"
+            ]
+        }
+    },
+    {
+        "answers": [2, 2, 2, 3, 3, 2, 3],
+        "learning_path": {
+            "Cómo Crear un Presupuesto": [
+                "Cómo Crear un Presupuesto"
+            ],
+            "Ahorro vs. Inversión": [
+                "Tipos de Inversiones"
+            ]
+        }
+    },
+    {
+        "answers": [1, 3, 2, 3, 4, 1, 4],
+        "learning_path": {
+            "Cómo Crear un Presupuesto": [
+                "Cómo Crear un Presupuesto"
+            ],
+            "Gestión de Deudas": [
+                "Estrategias de Pago de Deudas"
+            ]
+        }
+    },
+    {
+        "answers": [4, 3, 3, 2, 1, 2, 1],
+        "learning_path": {
+            "Introducción a las Inversiones": [
+                "Guía de Inversiones"
+            ],
+            "Gestión de Deudas": [
+                "Tipos de Deudas"
+            ]
+        }
+    },
+    {
+        "answers": [2, 1, 2, 1, 1, 1, 1],
+        "learning_path": {
+            "Cómo Crear un Presupuesto": [
+                "Control de Gastos"
+            ],
+            "Aspectos Fiscales de Inversiones": [
+                "Declaración de Impuestos"
+            ]
+        }
+    },
+    {
+        "answers": [1, 1, 1, 1, 1, 1, 1],
+        "learning_path": {
+            "Conceptos Básicos de Finanzas Personales": [
+                "Introducción a Finanzas Personales"
+            ]
+        }
+    },
+    {
+        "answers": [3, 2, 2, 3, 4, 2, 1],
+        "learning_path": {
+            "Estrategias de Ahorro": [
+                "Inversiones de Bajo Riesgo"
+            ],
+            "Gestión de Deudas": [
+                "Estrategias de Pago de Deudas"
+            ]
+        }
+    },
+    {
+        "answers": [2, 1, 2, 3, 2, 1, 1],
+        "learning_path": {
+            "Cómo Crear un Presupuesto": [
+                "Cómo Crear un Presupuesto"
+            ],
+            "Aspectos Fiscales de Inversiones": [
+                "Declaración de Impuestos"
+            ]
+        }
+    },
+    {
+        "answers": [1, 1, 1, 1, 1, 1, 1],
+        "learning_path": {
+            "Conceptos Básicos de Finanzas Personales": [
+                "Introducción a Finanzas Personales"
+            ]
+        }
+    },
+    {
+        "answers": [2, 3, 1, 1, 3, 1, 4],
+        "learning_path": {
+            "Cómo Crear un Presupuesto": [
+                "Cómo Crear un Presupuesto"
+            ],
+            "Aspectos Fiscales de Inversiones": [
+                "Planificación Fiscal"
+            ]
+        }
+    },
+    {
+        "answers": [3, 4, 2, 1, 2, 1, 1],
+        "learning_path": {
+            "Gestión de Deudas": [
+                "Estrategias de Pago de Deudas"
+            ],
+            "Planificación Financiera": [
+                "Uso de Herramientas Financieras"
+            ]
+        }
+    },
+    {
+        "answers": [1, 2, 2, 2, 3, 1, 1],
+        "learning_path": {
+            "Ahorro vs. Inversión": [
+                "Tipos de Inversiones"
+            ],
+            "Gestión de Deudas": [
+                "Control de Créditos"
+            ]
+        }
+    },
+    {
+        "answers": [4, 3, 3, 1, 1, 1, 1],
+        "learning_path": {
+            "Estrategias de Ahorro": [
+                "Estrategias de Ahorro"
+            ],
+            "Planificación Financiera": [
+                "Establecimiento de Metas Financieras"
+            ]
+        }
+    },
+    {
+        "answers": [2, 2, 2, 3, 2, 1, 1],
+        "learning_path": {
+            "Cómo Crear un Presupuesto": [
+                "Cómo Crear un Presupuesto"
+            ],
+            "Introducción a las Inversiones": [
+                "Guía de Inversiones"
+            ]
+        }
+    },
+    {
+        "answers": [1, 1, 1, 1, 1, 1, 1],
+        "learning_path": {
+            "Conceptos Básicos de Finanzas Personales": [
+                "Introducción a Finanzas Personales"
+            ]
+        }
+    }
+]

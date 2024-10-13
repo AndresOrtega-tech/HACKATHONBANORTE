@@ -47,16 +47,24 @@ async def login(user: User):
 async def submit_survey(response: SurveyResponse):
     if len(response.answers) != 7:
         raise HTTPException(status_code=400, detail="Survey must contain 7 answers")
+    
+    # Guardar las respuestas de la encuesta
     add_survey_response(response.username, response.answers)
-    return {"message": "Survey responses updated!"}
+    
+    # Generar la ruta de aprendizaje
+    set_learning_path(response.username)  # Llama a la función que genera la ruta de aprendizaje
+    
+    return {"message": "Survey responses updated and learning path generated!"}
 
 @api_router.get("/learning-path/{username}")
 async def get_learning_path_route(username: str):
     path = get_learning_path(username)
     if not path:
-        set_learning_path(username)
+        set_learning_path(username)  # Genera la ruta si no existe
         path = get_learning_path(username)
+    
     return {"username": username, "learning_path": path}
+
 
 @api_router.post("/chatbot")
 async def chatbot_interact(query: ChatBotQuery):

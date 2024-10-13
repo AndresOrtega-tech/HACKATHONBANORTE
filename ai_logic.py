@@ -1,8 +1,48 @@
-from typing import List
+from typing import Dict, List
+import numpy as np
+import tensorflow as tf
+from google.cloud import firestore
+from info import *
 
-def generate_learning_path(username: str) -> List[str]:
-    # Lógica para generar la ruta de aprendizaje personalizada
-    return ["Introducción a Finanzas", "Inversiones Básicas", "Gestión de Deudas"]
+# Cargar el modelo de aprendizaje automático
+MODEL_PATH = 'learning_path_model.h5'
+model = tf.keras.models.load_model(MODEL_PATH)
+
+# Inicializar Firestore
+db = firestore.Client(project='gcp-banorte-hackaton-team-13')
+
+def get_learning_paths_from_db() -> Dict[str, List[str]]:
+    """Obtener los nombres de las rutas de aprendizaje y su contenido desde Firestore."""
+    try:
+        # Asumimos que tienes una colección llamada 'content_topics'
+        learning_paths_ref = db.collection('content_topics')
+        paths = learning_paths_ref.stream()
+
+        # Devolver un diccionario donde la clave es el nombre de la ruta y el valor es el contenido
+        return {doc.id: doc.to_dict().get('content', []) for doc in paths}  
+    except Exception as e:
+        print(f"Error al obtener rutas de aprendizaje: {e}")
+        return {}
+
+def generate_learning_path(answers: List[int]) -> Dict[str, List[str]]:
+    """Generar la ruta de aprendizaje basada en las respuestas de la encuesta."""
+    # Preprocesar las respuestas
+    X = np.array([answers])
+    predictions = model.predict(X)
+
+    # Umbral para las predicciones
+    threshold = 0.5
+    learning_paths = {}
+
+    # Iterar sobre las predicciones y construir la ruta de aprendizaje
+    for i, predicted in enumerate(predictions[0]):  # Se asume que predictions es de la forma (1, n)
+        if predicted > threshold:
+            # Aquí asumimos que el índice de la predicción corresponde al índice de las rutas
+            path_name = list(content_map.keys())[i]
+            # Obtener el contenido de cada ruta desde content_map
+            learning_paths[path_name] = content_map[path_name]["resources"]
+
+    return learning_paths 
 
 def recommend_products(username: str) -> List[dict]:
     # Lógica para recomendar productos financieros al usuario
