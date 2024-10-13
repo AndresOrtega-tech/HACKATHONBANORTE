@@ -34,8 +34,8 @@ El Finanzas AI Chatbot es una aplicación diseñada para ayudar a los usuarios a
 * **Firestore: Base de datos en tiempo real de Google para el almacenamiento de datos.
 * **Pydantic: Para la validación y gestión de datos.
 
-Estructura del Proyecto
-La estructura del proyecto es la siguiente:
+## Estructura del Proyecto
+### La estructura del proyecto es la siguiente:
 finanzas_ai_chatbot
 
 │
@@ -43,7 +43,6 @@ finanzas_ai_chatbot
 
 ├── database.py     
 
-      # Manejo de la base de datos Firestore
 
 ├── ai_logic.py           # Lógica de aprendizaje automático
 
